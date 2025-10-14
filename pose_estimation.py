@@ -5,12 +5,15 @@ import os
 from DataReader import convert_mov_to_frames
 from Visualizer import annotate_pose_on_input_and_save_as_mp4
 
-movie_name = 'IMG_1872'
-video_path = f'/home/hazel/Datasets/image-online/{movie_name}.MOV'
-img_folder = f'/home/hazel/Datasets/image-online/{movie_name}_frames'
-pose_folder = f'/home/hazel/Datasets/image-online/{movie_name}_pose'
-output_movie_path = f'/home/hazel/Datasets/image-online/{movie_name}_pose.mp4'
-segmentation_folder = f'/home/hazel/Datasets/image-online/{movie_name}_segmentation'
+video_path = "/home/hhan2/Datasets/PPOSS Home of the future data collection/Sensor Node 12 (HAR1)/2025_03_28_17_34_53_SB-79812D"
+
+movie_name = 'rgb.avi'
+
+img_folder = f'{video_path}/frames'  # folder to save frames
+pose_folder = f'{video_path}/pose'
+output_movie_path = f'{video_path}/pose.mp4'
+segmentation_folder = f'{video_path}/segmentation'
+video_path = f'{video_path}/{movie_name}'  # path to the video file
 
 
 if __name__ == "__main__":
