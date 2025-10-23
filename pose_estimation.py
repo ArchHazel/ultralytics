@@ -6,7 +6,7 @@ from DataReader import convert_mov_to_frames
 from Visualizer import annotate_pose_on_input_and_save_as_mp4
 from pathlib import Path
 
-session_name_keyword = 'AnchorPointsCalibration' # 2025_03_28_17_34_53_SB-79812D
+session_name_keyword = 'SimpleTrajectory' # 2025_03_28_17_34_53_SB-79812D
 sensor_node_list = [ 'Sensor Node 12 (HAR1)' , 'Sensor Node 14 (HAR2)' ,  'Sensor Node 15 (HAR3)' , 'Sensor Node 3 (HAR4)' , 'Sensor Node 6 (HAR6)' , 'Sensor Node 8 (HAR8)'] 
 
 def from_keyword_search_session_folder(base_folder, session_name_keyword):
@@ -22,7 +22,8 @@ def from_keyword_search_session_folder(base_folder, session_name_keyword):
 for sensor_node in sensor_node_list:
 
     video_folder =  Path(f"/mnt/data01/PPOSS Home of the future data collection/{sensor_node}")
-    video_path = from_keyword_search_session_folder(video_folder, session_name_keyword)
+    video_path = video_folder / from_keyword_search_session_folder(video_folder, session_name_keyword)
+    print(f"Found video path: {video_path}")
     movie_name = 'rgb.avi'
     img_folder = f'{video_path}/frames'  # folder to save frames
     pose_folder = f'{video_path}/pose'
