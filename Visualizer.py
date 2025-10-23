@@ -60,6 +60,13 @@ def annotate_pose_on_input_and_save_as_mp4(model, model_seg, img_folder, pose_fo
 
         # give me visible pose keypoints
         torso_index = [5,6,11,12]
+        # print(len(results))
+        # print(results[0].keypoints.data.shape)
+        if results[0].keypoints.data.shape[0] ==0:
+            print("No keypoints detected")
+            if log_keypoints.get(img_path) is not None:
+                del log_keypoints[img_path]
+            continue
         is_torso_keypoinrts = results[0].keypoints.data[0][6]
         is_visible_keypoints = results[0].keypoints.data[0][:,-1] > 0.8
         keypoints = results[0].keypoints.data[0][:,:-1][is_visible_keypoints]
